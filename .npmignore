@@ -1,0 +1,15 @@
+*.yml
+.github
+.babelrc
+.DS_Store
+.eslintcache
+.eslintignore
+.eslintrc.json
+.gitignore
+coverage
+cspell.json
+jest.config.js
+node_modules
+src
+webpack.config.js
+rollup.config.js

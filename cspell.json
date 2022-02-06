@@ -1,0 +1,14 @@
+{
+  "allowCompoundWords": true,
+  "words": [
+    "DITUS",
+    "Roadmap"
+  ],
+  "ignorePaths": [
+    ".config",
+    ".eslintcache",
+    ".vscode",
+    "bin",
+    "package-lock.json"
+  ]
+}
