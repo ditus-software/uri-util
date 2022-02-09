@@ -15,4 +15,4 @@ list of proposed features (and known issues).
 
 ## License
 
-This project is licensed under the terms of the [MIT license](LICENSE.md).
+This project is licensed under the terms of the [MIT license](LICENSE).
