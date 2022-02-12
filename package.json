@@ -1,6 +1,6 @@
 {
   "name": "@ditus/uri-util",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript library for working with URL's.",
   "private": false,
   "main": "dist/index.js",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ditus-software/uri-util#readme",
   "peerDependencies": {
+    "@ditus/string-util": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",

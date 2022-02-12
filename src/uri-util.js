@@ -2,7 +2,7 @@
 // Copyright (c) DITUS INC. All rights reserved. See LICENSE file in the project
 // root for details.
 //
-// import queryString from 'query-string';
+import '@ditus/string-util';
 
 /**
  * Provides methods for working with a uniform resource identifier (URI).
@@ -21,19 +21,19 @@ export default class UriUpc {
 
     // If the URL is not specified, then we can simply append the parameter onto
     // an empty string. There may be some use for such a use case.
-    if (!newUrl || newUrl.trim() === '') {
+    if (String.isNullOrWhiteSpace(newUrl)) {
       newUrl = '';
     }
 
     // If the parameter name is not specified, then there is nothing to do.
-    if (!parameterName || parameterName.trim() === '') {
+    if (String.isNullOrWhiteSpace(parameterName)) {
       return newUrl;
     }
 
     // If the value is not specified, then simply remove the parameter and
     // return the URL.
     newUrl = this.removeParameter(newUrl, parameterName);
-    if (!value || value.trim() === '') {
+    if (String.isNullOrWhiteSpace(value)) {
       return newUrl;
     }
 
@@ -61,7 +61,7 @@ export default class UriUpc {
    * @returns {string} The value with a forward-slash appended to it.
    */
   static appendForwardSlash(value) {
-    if (!value || value.trim() === '') {
+    if (String.isNullOrWhiteSpace(value)) {
       return '/';
     }
 
@@ -82,7 +82,7 @@ export default class UriUpc {
    * them.
    */
   static combine(value1, value2) {
-    if ((!value1 || value1.trim() === '') && (!value2 || value2.trim() === '')) {
+    if ((String.isNullOrWhiteSpace(value1) && String.isNullOrWhiteSpace(value2))) {
       return null;
     }
 
@@ -97,11 +97,11 @@ export default class UriUpc {
     }
 
     let result = '';
-    if (newValue1 && newValue1.trim() !== '') {
+    if (!String.isNullOrWhiteSpace(newValue1)) {
       result = newValue1;
     }
 
-    if (newValue2 && newValue2.trim() !== '') {
+    if (!String.isNullOrWhiteSpace(newValue2)) {
       if (result && result.trim() !== '') {
         result = result.concat('/');
       }
@@ -120,7 +120,7 @@ export default class UriUpc {
    * anything.com OR test.anything.com.
    */
   static getDomainName(url) {
-    if (!url || url.trim() === '') {
+    if (String.isNullOrWhiteSpace(url)) {
       return null;
     }
 
@@ -163,7 +163,7 @@ export default class UriUpc {
    * defaultValue if it is not a number or outside the specified range.
    */
   static parseIntParameter(value, min, max, defaultValue) {
-    if ((!value || value.trim() === '') || !Number.isInteger(+value)) {
+    if (String.isNullOrWhiteSpace(value) || !Number.isInteger(+value)) {
       return defaultValue;
     }
 
@@ -185,7 +185,7 @@ export default class UriUpc {
    * @returns {string} The value as a string.
    */
   static parseStringParameter(value, defaultValue) {
-    if ((!value || value.trim() === '')) {
+    if (String.isNullOrWhiteSpace(value)) {
       return defaultValue;
     }
 
@@ -200,7 +200,7 @@ export default class UriUpc {
    * @returns {string} The URL without the parameter.
    */
   static removeParameter(url, parameterName) {
-    if ((!url || url.trim() === '') || (!parameterName || parameterName.trim() === '')) {
+    if (String.isNullOrWhiteSpace(url) || String.isNullOrWhiteSpace(parameterName)) {
       return url;
     }
 
@@ -214,7 +214,7 @@ export default class UriUpc {
     const parameters = qs.split('&');
     for (let i = parameters.length - 1; i >= 0; i -= 1) {
       const parameter = parameters[i].split('=')[0];
-      if (parameter.toLowerCase() === parameterName.toLowerCase()) {
+      if (String.equals(parameter, parameterName, true)) {
         parameters.splice(i, 1);
       }
     }
