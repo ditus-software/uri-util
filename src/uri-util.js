@@ -7,7 +7,7 @@ import '@ditus/string-util';
 /**
  * Provides methods for working with a uniform resource identifier (URI).
  */
-export default class UriUpc {
+export default class UriUtil {
   /**
    * Adds the specified parameter to the URL, replacing any existing parameter of the same name.
    *
